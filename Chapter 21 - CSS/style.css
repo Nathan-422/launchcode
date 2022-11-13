@@ -1,0 +1,30 @@
+body {
+    background-color:rgb(247, 247, 247);
+}
+
+p {
+    color: darkgrey;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: cadetblue;
+    padding: 10px;
+    padding-left: 40px;
+}
+
+div {
+    background-color: #ffffff;
+    min-height: auto;
+    padding: 20px;
+}
+
+footer {
+    color: dimgray;
+}
+
+/* note, this class selector overrules the preceding element selector */
+.copyright {
+    color:darkslategray;
+}
