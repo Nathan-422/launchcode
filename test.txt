@@ -1,4 +1,7 @@
 I wonder if I can auto-merge line bumps?
-Hello world!
 
+Hello world!
 Let's make some changes.
+
+This shouldn't be too hard.
+
