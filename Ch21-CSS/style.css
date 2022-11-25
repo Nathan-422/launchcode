@@ -29,14 +29,6 @@ header {
     color: #ffffff;
 }
 
-div {
-    background-color: #aef3ff;
-    min-height: auto;
-    /* padding: 20px; */
-
-    position: relative;
-}
-
 footer {
     color: dimgray;
 }
@@ -49,11 +41,15 @@ footer {
 .fullWidthImage {
     max-width: 100%;
     height: auto;
-    
+
     /* border: 3px solid #ddd; */
 
     /* position:absolute; */
     /* top: 0px;
     left: 0px; */
 
+}
+
+.peak {
+    justify-content: center;
 }
