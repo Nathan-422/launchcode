@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form Validation</title>
+    <style>
+          label {display: block;}
+          body {padding: 25px;}
+    </style>
+  </head>
+  <script>
+    window.addEventListener("load", function() {
+      
+      let form = document.querySelector("form");
+      form.addEventListener("submit", function(event) {
+        let userInput = document.querySelector("input[name=username]").value;
+        let teamInput = document.querySelector("input[name=team]").value;
+
+        if (!userInput || !teamInput) {
+          if (!userInput) {
+            alert("Username cannot be empty!")
+          } else {
+            alert("Team name cannot be empty!")
+          }
+          
+          event.preventDefault();
+        }
+
+        // alert(userInput + " submit clicked");
+        
+      });
+
+    });
+  </script>
+  <body style="background-color:#e8d396">
+    <form method="POST" action="https://handlers.education.launchcode.org/request-parrot">
+      <label>Username <input type="text" name="username"></label>
+      <label>Team Name <input type="text" name="team"></label>
+      <button>Submit</button>
+    </form>
+
+    <p>WARNING: This ONLY works in <b>replit</b> if this "result" page is opened in its own window. Click the icon that shows a box with an arrow coming out of it.
+    </p>
+  </body>
+</html>
