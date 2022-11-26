@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rocket Simulation</title>
+    <style>
+      label {
+        display: block;
+        margin-bottom: 7px;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", function () {
+        const form = document.getElementById("launch-form");
+
+        form.addEventListener("submit", function(event) {
+            const testNameInput = document.querySelector("input[name=test-name-input]");
+            const dateInput = document.querySelector("input[name=date-input]");
+            const rocketTypeInput = document.querySelector("select[name=rocket-type-select]");
+            const numBoostersInput = document.querySelector("input[name=booster-count-select]");
+            const windInput = document.querySelector("input[name=wind-rating]:checked");
+            const productionServerInput = document.querySelector("input[name=production-grade-input]");
+
+            // event.preventDefault();
+
+            if (!testNameInput.value) {
+                event.preventDefault();
+                alert("Test Name cannot be blank.")
+            } else if (!dateInput.value) {
+                event.preventDefault();
+                alert("Test must have a date.")
+            } else if (!rocketTypeInput.value) {
+                event.preventDefault();
+                alert("A rocket type must be selected.")
+            } else if (!numBoostersInput.value) {
+                event.preventDefault();
+                alert("Please select a number of boosters.");
+            } else if (!windInput.value) {
+                event.preventDefault();
+                alert("Please select a wind speed.");
+            }
+
+            
+//             console.log(
+// `Test name: ${testNameInput.value}
+// Test date: ${dateInput.value}
+// Rocket type: ${rocketTypeInput.value}
+// Number of boosters: ${numBoostersInput.value}
+// Wind speed range: ${windInput.value}
+// Production grade servers: ${productionServerInput.checked}`);
+//         })
+      });
+    </script>
+  </head>
+  <body>
+    <!-- TODO: add form here -->
+    <form
+        id="launch-form"
+      method="post"
+      action="https://handlers.education.launchcode.org/request-parrot"
+    >
+      <label>Test Name <input type="text" name="test-name-input" /></label>
+      <label>Test Date <input type="date" name="date-input" /></label>
+      <label
+        >Rocket Type
+        <select type="select" name="rocket-type-select">
+          <option value="">-select an option-</option>
+          <option value="brant">Brant</option>
+          <option value="lynx">Lynx</option>
+          <option value="orion">Orion</option>
+          <option value="terrier">Terrier</option>
+        </select>
+      </label>
+      <label
+        >Number of Rocket Boosters
+        <input type="number" name="booster-count-select" min="1" max="9"
+      /></label>
+      <p>Wind Rating:</p>
+      <label>No Wind <input type="radio" name="wind-rating" value="0" /></label>
+      <label>Mild <input type="radio" name="wind-rating" value="10" /></label>
+      <label>Strong <input type="radio" name="wind-rating" value="20" /></label>
+      <label
+        >Use production grade servers
+        <input type="checkbox" name="production-grade-input" 
+      /></label>
+      <!-- <label>Test box: <input type="week" name="hidden" /></label> -->
+      <input type="Submit" name="form-submit-button" value="Run Simulation" />
+    </form>
+  </body>
+</html>
