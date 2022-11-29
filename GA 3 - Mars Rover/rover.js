@@ -26,7 +26,7 @@ class Rover {
           let completed;
           switch (this.mode) {
             case "NORMAL":
-              this.position += command.value;
+              this.position = command.value;
               completed = true;
               break;
             case "LOW_POWER":

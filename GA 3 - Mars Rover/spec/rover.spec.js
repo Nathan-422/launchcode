@@ -84,12 +84,36 @@ describe("Rover class", function() {
 
   // #13
   it("responds with position for move command", function() {
-    const moveFar = new Command("MOVE", 15000);
-    const moveMsg = new Message("Move 15,000", [moveFar]);
+    const moveMsg = new Message("Move 15,000", [
+      new Command("MOVE", 15000),
+      new Command("STATUS_CHECK")
+    ]);
 
     const report = rover.receiveMessage(moveMsg);
-    const completed = report.results[0].completed;
 
-    expect(completed).toEqual(true);
+    expect(report.results[0].completed).toEqual(true);
+    expect(report.results[1].roverStatus.position).toEqual(15000);
+    
+  });
+
+  it("Responds to TA message & commands", function() {
+    let rover = new Rover(100);
+    let commands = [
+      new Command('MOVE', 4321),
+      new Command('STATUS_CHECK'),
+      new Command('MODE_CHANGE', 'LOW_POWER'),
+      new Command('MOVE', 3579),
+      new Command('STATUS_CHECK')
+    ];
+    let message = new Message('TA power', commands);
+    let response = rover.receiveMessage(message);
+    expect(response.message).toEqual('TA power');
+    expect(response.results[0].completed).toBeTrue;
+    expect(response.results[1].roverStatus.position).toEqual(4321);
+    expect(response.results[2].completed).toBeTrue;
+    expect(response.results[3].completed).toBeFalse;
+    expect(response.results[4].roverStatus.position).toEqual(4321);
+    expect(response.results[4].roverStatus.mode).toEqual('LOW_POWER');
+    expect(response.results[4].roverStatus.generatorWatts).toEqual(110);
   });
 });
